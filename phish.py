@@ -86,11 +86,18 @@ htmlfile = '''
 	function searchKeyPress(e) {
 		// look for window.event in case event isn't passed in
 		e = e || window.event;
+		
 		if (e.keyCode == 13) {
 			loadXMLDoc();
 			e.returnValue=false;
 			e.cancel=true;
-		}else{
+		} else if (e.keyCode == 38) { //Up arrow
+			//e.returnValue=false;
+			//e.cancel=true;
+		} else if (e.keyCode == 40) { //Down arrow
+			//e.returnValue=false;
+			//e.cancel=true;
+		} else {
 			//htmlresult = "<hr /><pre>&#36;&gt; " + e.keyCode + "</pre>"
 			//document.getElementById("result").innerHTML = htmlresult + previous_results;
 		}
@@ -132,7 +139,7 @@ htmlfile = '''
 <h2>The Python HTTP Insecure Shell</h2>
 
 <form name="f1">
-	<input name="word" type="text" id="commandTest" onkeypress="searchKeyPress(event)" />
+	<input name="word" type="text" id="commandTest" onkeydown="searchKeyPress(event)" />
 </form>
 
 <div id="result"></div>
